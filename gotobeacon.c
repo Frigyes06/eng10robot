@@ -128,12 +128,20 @@ void Move(){
 	motor[port10] = tempSpeed; // left, port	 10
 }
 
+bool detectFrontBump() {
+	if(SensorValue[bumper]==1){
+		return True;
+	} else {
+		return False;
+	}
+}
+
 /*
 The GOBEACON main program essentially sets up all the configuration variables and repeatedly
 execute the three routines: Read_PD, find_max, and move.*/
 task main(){
 	freq = 0; // 0 = 1khz (red) 1 = 10khz (green)
-	ambient_level = 200; // used in 'move'
+	ambient_level = 100; // used in 'move'
 	slow_level = 5000;// used in move
 	stop_level = 6000;//used in move
 	expose_time = 5; // expose time was changed from 3ms to 5ms (3ms in easyC -> 5ms in RobotC)
@@ -147,7 +155,7 @@ task main(){
 		ReadPD();
 		Find_max();
 		Move();
-		if(SensorValue[bumper]==1){
+		if(detectFrontBump()){
 			break;
 		}
 	}
