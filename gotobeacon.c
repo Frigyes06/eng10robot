@@ -131,9 +131,9 @@ void Move(){
 
 bool detectFrontBump() {
 	if(SensorValue[bumper]==1){
-		return True;
+		return true;
 	} else {
-		return False;
+		return false;
 	}
 }
 
@@ -159,14 +159,14 @@ task main(){
 	slow_speed = 25;//slow speed , used in move
 	spin_speed = 50;//spin speed (for searching mode),used in move
 	SensorValue[digital10] = freq;// turn to 1KHz(red beacon)
-	while(detectFrontBump() == False) {
+	while(detectFrontBump() == false) {
 		ReadPD();
 		Find_max();
 		Move();
 	}
 	turnOffBeacon();
-	freq = 1
-	while(detectFrontBump() == False) {
+	freq = 1;
+	while(detectFrontBump() == false) {
 		ReadPD();
 		Find_max();
 		Move();
