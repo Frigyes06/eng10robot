@@ -4,6 +4,7 @@
 #pragma config(Sensor, dgtl11, digital11,			 sensorDigitalOut)
 #pragma config(Sensor, dgtl12, digital12,			 sensorDigitalOut)
 #pragma config(Motor,	 port1,						rightMotor,		 tmotorVex393_HBridge, openLoop, reversed)
+#pragma config(Motor,	 port2,					arm,		 tmotorVex393_MC29, openLoop)
 #pragma config(Motor,	 port10,					leftMotor,		 tmotorVex393_HBridge, openLoop, reversed)
 //*!!Code automatically generahttps://github.com/Frigyes06/eng10robotted by 'ROBOTC' configuration wizard							 !!*//
 
@@ -137,7 +138,11 @@ bool detectFrontBump() {
 }
 
 void turnOffBeacon() {
-	
+	motor[arm] = 10;
+	delay(2000);
+	motor[arm] = -10;
+	delay(2000);
+	motor[arm] = 0;
 }
 
 /*
