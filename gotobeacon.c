@@ -136,6 +136,10 @@ bool detectFrontBump() {
 	}
 }
 
+void turnOffBeacon() {
+	
+}
+
 /*
 The GOBEACON main program essentially sets up all the configuration variables and repeatedly
 execute the three routines: Read_PD, find_max, and move.*/
@@ -150,13 +154,16 @@ task main(){
 	slow_speed = 25;//slow speed , used in move
 	spin_speed = 50;//spin speed (for searching mode),used in move
 	SensorValue[digital10] = freq;// turn to 1KHz(red beacon)
-
-	while(true){
+	while(detectFrontBump() == False) {
 		ReadPD();
 		Find_max();
 		Move();
-		if(detectFrontBump()){
-			break;
-		}
+	}
+	turnOffBeacon();
+	freq = 1
+	while(detectFrontBump() == False) {
+		ReadPD();
+		Find_max();
+		Move();
 	}
 }
