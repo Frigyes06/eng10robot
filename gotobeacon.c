@@ -181,7 +181,7 @@ task main(){
 	}
 	while(PD_sum>5000) {
 		turnOffBeacon();
-		Read_PD();
+		ReadPD();
 	}
 	backUp();
 	freq = 1;
