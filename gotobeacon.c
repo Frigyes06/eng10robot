@@ -173,7 +173,7 @@ task main(){
 		Move();
 	}
 	turnOffBeacon();
-	backUP();
+	backUp();
 	freq = 1;
 	SensorValue(digital10) = freq;
 	while(detectFrontBump() == false) {
