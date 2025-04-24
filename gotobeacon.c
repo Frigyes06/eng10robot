@@ -163,8 +163,8 @@ task main(){
 	slow_level = 5000;// used in move
 	stop_level = 6000;//used in move
 	expose_time = 5; // expose time was changed from 3ms to 5ms (3ms in easyC -> 5ms in RobotC)
-	steer_sensitivity = 10;//used in move
-	forward_speed = 30;//forward speed , used in move
+	steer_sensitivity = 20;//used in move
+	forward_speed = 35;//forward speed , used in move
 	slow_speed = 25;//slow speed , used in move
 	spin_speed = 50;//spin speed (for searching mode),used in move
 	SensorValue[digital10] = freq;// turn to 1KHz(red beacon)
