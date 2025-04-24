@@ -200,7 +200,7 @@ task main(){
 		Move();
 	}
 	captureBeacon();
-	while(sensorValue(sonar1)<300){
+	while(SensorValue(sonar1)<400){
 		turn();
 	}
 	backUp(127, 1000000);
