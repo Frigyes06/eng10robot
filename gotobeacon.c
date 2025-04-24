@@ -179,7 +179,7 @@ task main(){
 		Find_max();
 		Move();
 	}
-	while(PD_sum>500) {
+	while(PD_sum>5000) {
 		turnOffBeacon();
 		Read_PD();
 	}
