@@ -138,11 +138,19 @@ bool detectFrontBump() {
 }
 
 void turnOffBeacon() {
-	motor[arm] = 10;
-	delay(2000);
-	motor[arm] = -10;
-	delay(2000);
+	motor[arm] = 80;
+	delay(1000);
+	motor[arm] = -40;
+	delay(700);
 	motor[arm] = 0;
+}
+
+void backUp() {
+	motor[leftMotor] = 50;
+	motor[rightMotor] = -50;
+	delay(1000);
+	motor[leftMotor] = 0;
+	motor[rightMotor] = 0;
 }
 
 /*
@@ -150,12 +158,12 @@ The GOBEACON main program essentially sets up all the configuration variables an
 execute the three routines: Read_PD, find_max, and move.*/
 task main(){
 	freq = 0; // 0 = 1khz (red) 1 = 10khz (green)
-	ambient_level = 100; // used in 'move'
+	ambient_level = 200; // used in 'move'
 	slow_level = 5000;// used in move
 	stop_level = 6000;//used in move
 	expose_time = 5; // expose time was changed from 3ms to 5ms (3ms in easyC -> 5ms in RobotC)
-	steer_sensitivity = 20;//used in move
-	forward_speed = 35;//forward speed , used in move
+	steer_sensitivity = 10;//used in move
+	forward_speed = 30;//forward speed , used in move
 	slow_speed = 25;//slow speed , used in move
 	spin_speed = 50;//spin speed (for searching mode),used in move
 	SensorValue[digital10] = freq;// turn to 1KHz(red beacon)
@@ -165,7 +173,9 @@ task main(){
 		Move();
 	}
 	turnOffBeacon();
+	backUP();
 	freq = 1;
+	SensorValue(digital10) = freq;
 	while(detectFrontBump() == false) {
 		ReadPD();
 		Find_max();
