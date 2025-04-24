@@ -147,17 +147,25 @@ void turnOffBeacon() {
 }
 
 void captureBeacon() {
-	motor[arm] = 80;
+	motor[arm] = 50;
 	delay(1000);
 	motor[arm] = 0;
 }
 
-void backUp() {
-	motor[leftMotor] = 50;
-	motor[rightMotor] = -50;
-	delay(1000);
+void backUp(int speed, int time) {
+	motor[leftMotor] = speed;
+	motor[rightMotor] = -speed;
+	delay(time);
 	motor[leftMotor] = 0;
 	motor[rightMotor] = 0;
+}
+
+void turn(){
+	motor[leftMotor]=20;
+	motor[rightMotor]=20;	
+	delay(1000);
+	motor[leftMotor]=0;
+	motor[rightMotor]=0;
 }
 
 /*
@@ -183,7 +191,7 @@ task main(){
 		turnOffBeacon();
 		ReadPD();
 	}
-	backUp();
+	backUp(50, 1000);
 	freq = 1;
 	SensorValue(digital10) = freq;
 	while(detectFrontBump() == false) {
@@ -191,5 +199,9 @@ task main(){
 		Find_max();
 		Move();
 	}
-	captureBeacon();	
+	captureBeacon();
+	while(sensorValue(sonar1)<300){
+		turn();
+	}
+	backUp(127, 1000000);
 }
