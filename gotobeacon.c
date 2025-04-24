@@ -1,5 +1,5 @@
 #pragma config(Sensor, in1,		 analog1,				 sensorAnalog)
-#pragma config(Sensor, dgtl1, 	bumper, 			sensorDigitalIn)
+#pragma config(Sensor, dgtl1, 	bumper, 			sensorTouch)
 #pragma config(Sensor, dgtl2, 	sonar1, 			sensorSONAR_cm)
 #pragma config(Sensor, dgtl10, digital10,			 sensorDigitalOut)
 #pragma config(Sensor, dgtl11, digital11,			 sensorDigitalOut)
