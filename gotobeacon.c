@@ -142,7 +142,7 @@ void turnOffBeacon() {
 	motor[arm] = 80;
 	delay(1000);
 	motor[arm] = -40;
-	delay(700);
+	delay(800);
 	motor[arm] = 0;
 }
 
@@ -173,7 +173,9 @@ task main(){
 		Find_max();
 		Move();
 	}
-	turnOffBeacon();
+	while(ReadPD()>500) {
+		turnOffBeacon();
+	}
 	backUp();
 	freq = 1;
 	SensorValue(digital10) = freq;
