@@ -146,6 +146,12 @@ void turnOffBeacon() {
 	motor[arm] = 0;
 }
 
+void captureBeacon() {
+	motor[arm] = 80;
+	delay(1000);
+	motor[arm] = 0;
+}
+
 void backUp() {
 	motor[leftMotor] = 50;
 	motor[rightMotor] = -50;
@@ -184,4 +190,5 @@ task main(){
 		Find_max();
 		Move();
 	}
+	captureBeacon();	
 }
