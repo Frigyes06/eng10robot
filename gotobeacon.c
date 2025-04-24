@@ -161,9 +161,9 @@ void backUp(int speed, int time) {
 }
 
 void turn(){
-	motor[leftMotor]=20;
-	motor[rightMotor]=20;	
-	delay(1000);
+	motor[leftMotor]=40;
+	motor[rightMotor]=40;
+	delay(500);
 	motor[leftMotor]=0;
 	motor[rightMotor]=0;
 }
