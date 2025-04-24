@@ -179,8 +179,9 @@ task main(){
 		Find_max();
 		Move();
 	}
-	while(ReadPD()>500) {
+	while(PD_sum>500) {
 		turnOffBeacon();
+		Read_PD();
 	}
 	backUp();
 	freq = 1;
